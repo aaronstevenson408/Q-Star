@@ -30,23 +30,23 @@ A brief summary of the A\* algorithm's key concepts and applications, including 
 
 ## II. Dijkstra's Algorithm  
 
-2.1 [Dijkstra's Algorithm - Computerphile](https://www.youtube.com/watch?v=GazC3A4OQTE)
+###2.1 [Dijkstra's Algorithm - Computerphile](https://www.youtube.com/watch?v=GazC3A4OQTE)
 
-2.1.1[Satellite Navigation - Computerphile](https://www.youtube.com/watch?v=EUrU1y5is3Y)    
+###2.1.1[Satellite Navigation - Computerphile](https://www.youtube.com/watch?v=EUrU1y5is3Y)    
 
 ### A. Introduction  
 
 #### 1. What is Dijkstra's Algorithm?  
 
-1.1 Dijkstra's algorithm computes the shortest path between two nodes in a graph with non-negative edge path costs.  
+#####1.1 Dijkstra's algorithm computes the shortest path between two nodes in a graph with non-negative edge path #####costs.  
 
-1.2 It yields a shortest path tree, encompassing all shortest paths from the source node to other nodes.
+#####1.2 It yields a shortest path tree, encompassing all shortest paths from the source node to other nodes.
 
 #### 2. Applications  
 
-2.1 Widely used in routing and navigation systems, GPS, and network routing protocols. 
+#####2.1 Widely used in routing and navigation systems, GPS, and network routing protocols. 
 
-2.2 Applicable in scheduling and optimization problems.  
+#####2.2 Applicable in scheduling and optimization problems.  
 
 ### B. Algorithm Overview  
 
