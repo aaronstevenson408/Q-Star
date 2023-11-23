@@ -31,6 +31,7 @@ A brief summary of the A\* algorithm's key concepts and applications, including 
 ## II. Dijkstra's Algorithm  
 
 2.1 [Dijkstra's Algorithm - Computerphile](https://www.youtube.com/watch?v=GazC3A4OQTE)
+
 2.1.1[Satellite Navigation - Computerphile](https://www.youtube.com/watch?v=EUrU1y5is3Y)    
 
 ### A. Introduction  
