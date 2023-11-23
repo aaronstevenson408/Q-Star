@@ -29,12 +29,45 @@ Finally, the video discusses some of the limitations of the A* algorithm, and ho
 2. Nodes represent entities, and edges represent relationships between entities.
 3. Each edge has a weight, which represents the cost of traversing the edge.
 
-**C. Dijkstra's Algorithm**
-[![Dijkstra's Algorithm - Computerphile](https://img.youtube.com/vi/GazC3A4OQTE/0.jpg)](https://www.youtube.com/watch?v=GazC3A4OQTE)
+# C. Dijkstra's Algorithm
 
-1. Dijkstra's algorithm is a popular algorithm for finding the shortest path between two points.
-2. It works by keeping track of the shortest path to each node in the graph.
-3. It is guaranteed to find the shortest path between two points.
+##[![Dijkstra's Algorithm - Computerphile](https://img.youtube.com/vi/GazC3A4OQTE/0.jpg)](https://www.youtube.com/watch?v=GazC3A4OQTE)
+
+## I. Introduction
+
+### A. What is Dijkstra's Algorithm?
+
+Dijkstra's algorithm is a path-finding algorithm for finding the shortest path between two nodes in a graph with non-negative edge path costs. It produces a shortest path tree, which is a tree containing all the shortest paths from the source node to all other nodes in the graph.
+
+### B. Where is Dijkstra's Algorithm Used?
+
+Dijkstra's algorithm is widely used in routing and navigation applications, such as GPS navigation systems and network routing protocols. It is also used in other areas, such as scheduling and optimization problems.
+
+## II. Algorithm Overview
+
+### A. Maintaining a Priority Queue
+
+Dijkstra's algorithm maintains a priority queue of unvisited nodes with estimated distances from the source node. The lowest priority node is removed from the queue and updated with the distances to its neighbors. This process is repeated until all nodes have been visited or the destination node has been reached.
+
+### B. Repetition until Completion
+
+The algorithm continues to process nodes until all nodes have been visited or the destination node has been reached. Once the destination node has been reached, the shortest path to that node has been found.
+
+## III. Limitations
+
+### A. Negative Edge Path Costs
+
+Dijkstra's algorithm is not suitable for graphs with negative edge path costs. This is because the algorithm relies on the assumption that the distance between two nodes is always non-negative.
+
+### B. Direction of Travel
+
+Dijkstra's algorithm does not consider the direction of travel, which can lead to suboptimal routes in graphs with one-way edges.
+
+## IV. Extensions
+
+### A. A* Algorithm
+
+The A* algorithm is a variant of Dijkstra's algorithm that uses a heuristic to estimate the distance to the destination node. This can make the algorithm more efficient in some cases, especially when the heuristic is accurate.
 
 [![Satellite Navigation - Computerphile](https://img.youtube.com/vi/EUrU1y5is3Y/0.jpg)](https://www.youtube.com/watch?v=EUrU1y5is3Y)
 
