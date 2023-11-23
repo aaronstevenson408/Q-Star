@@ -70,12 +70,6 @@ A brief summary of the A\* algorithm's key concepts and applications, including 
 
 2.1 Does not consider the direction of travel, potentially resulting in suboptimal routes.  
 
-### D. Extensions  
-
-#### 1. A\* Algorithm  
-
-1.1 A\* is an extension of Dijkstra's algorithm utilizing a heuristic for improved performance.  
-
 ## III. A\* Algorithm  
 
 ### A. Introduction  
