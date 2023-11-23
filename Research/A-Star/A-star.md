@@ -10,9 +10,7 @@ Here is the outline rewritten in Markdown format:
 
 1.3 ![Adding of Distance plus Path via](adding_of_distance_plus_path_via.PNG)  
 
-2.1[![A* (A-Star) Pathfinding Algorithm Visualization on a Real Map](https://www.youtube.com/watch?v=CgW0HPHqFE8)](https://www.youtube.com/watch?v=CgW0HPHqFE8)
-A* (A-Star) Pathfinding Algorithm Visualization on a Real Map
-
+2.1[![A* (A-Star) Pathfinding Algorithm Visualization on a Real Map](https://www.youtube.com/watch?v=CgW0HPHqFE8)]
 
 ### Video Synopsis
 
