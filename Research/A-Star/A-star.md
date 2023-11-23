@@ -30,7 +30,8 @@ A brief summary of the A\* algorithm's key concepts and applications, including 
 
 ## II. Dijkstra's Algorithm  
 
-2.1 [Dijkstra's Algorithm - Computerphile](https://www.youtube.com/watch?v=GazC3A4OQTE)  
+2.1 [Dijkstra's Algorithm - Computerphile](https://www.youtube.com/watch?v=GazC3A4OQTE)
+2.1.1[Satellite Navigation - Computerphile](https://www.youtube.com/watch?v=EUrU1y5is3Y)    
 
 ### A. Introduction  
 
@@ -73,8 +74,6 @@ A brief summary of the A\* algorithm's key concepts and applications, including 
 #### 1. A\* Algorithm  
 
 1.1 A\* is an extension of Dijkstra's algorithm utilizing a heuristic for improved performance.  
-
-1.2 [Satellite Navigation - Computerphile](https://www.youtube.com/watch?v=EUrU1y5is3Y)  
 
 ## III. A\* Algorithm  
 
