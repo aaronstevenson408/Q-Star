@@ -16,8 +16,6 @@ The video starts by reviewing the Dijkstra algorithm, which is a similar graph s
 
 Finally, the video discusses some of the limitations of the A* algorithm, and how it can be improved. The video also discusses some of the applications of the A* algorithm, such as in robotics and pathfinding. 
 
-Sure, here is the first outline and sub points in markdown:
-
 **I. Introduction**
 
 **A. Problem Statement**
