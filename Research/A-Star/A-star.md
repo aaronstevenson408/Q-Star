@@ -1,87 +1,93 @@
-How does A Star Work: 
-[![A* (A Star) Search Algorithm - Computerphile](https://img.youtube.com/vi/ySN5Wnu88nE/0.jpg)](https://www.youtube.com/watch?v=ySN5Wnu88nE)
+Here is the outline rewritten in Markdown format:
 
-![Adding of Distance plus Path via Solved](adding_of_distance_plus_path_via_solved.PNG)
+# Understanding A\* Algorithm
 
-![Adding of Distance plus Path via](adding_of_distance_plus_path_via.PNG)
+## Overview
 
-Chooses the shorest path by taking in the lenght and weight of the paths , an optimized version of  Dijkstra's Algorithm
+1.1 [A\* Search Algorithm - Computerphile](https://www.youtube.com/watch?v=ySN5Wnu88nE)  
 
-Bard youtube synopsis of a-star video:
-Here is a summary of the video:
+1.2 ![Adding of Distance plus Path via Solved](adding_of_distance_plus_path_via_solved.PNG)
 
-The video reviews the A* (A Star) search algorithm, which is a graph search algorithm that finds the shortest path between two nodes in a graph. The algorithm works by using a heuristic function to estimate the distance to the goal node, and then using this information to prioritize which nodes to explore next. The video also discusses how the A* algorithm can be used to find the shortest path between two points on a map.
+1.3 ![Adding of Distance plus Path via](adding_of_distance_plus_path_via.PNG)  
 
-The video starts by reviewing the Dijkstra algorithm, which is a similar graph search algorithm that does not use a heuristic function. The video then explains how the A* algorithm works, and how it can be used to find the shortest path between two nodes in a graph. The video also discusses how the A* algorithm can be used to find the shortest path between two points on a map.
+### Video Synopsis
 
-Finally, the video discusses some of the limitations of the A* algorithm, and how it can be improved. The video also discusses some of the applications of the A* algorithm, such as in robotics and pathfinding. 
+A brief summary of the A\* algorithm's key concepts and applications, including comparisons with Dijkstra's algorithm.  
 
-**I. Introduction**
+## I. Introduction  
 
-**A. Problem Statement**
+### 1. Problem Statement  
 
-1. The goal is to find the shortest path between two points.
-2. This problem is common in computer science and has many applications.
+1.1 The objective is to determine the shortest path between two points.
 
-**B. Graph Representation**
+1.2 This problem is pervasive in computer science with diverse practical applications.
 
-1. A graph is a data structure used to represent relationships between entities.
-2. Nodes represent entities, and edges represent relationships between entities.
-3. Each edge has a weight, which represents the cost of traversing the edge.
+### 2. Graph Representation  
 
-# C. Dijkstra's Algorithm
+2.1 Graphs serve as structures to illustrate relationships among entities.
 
-##[![Dijkstra's Algorithm - Computerphile](https://img.youtube.com/vi/GazC3A4OQTE/0.jpg)](https://www.youtube.com/watch?v=GazC3A4OQTE)
+2.2 Nodes signify entities, while edges symbolize connections, each assigned a weight representing traversal cost.
 
-## I. Introduction
+## II. Dijkstra's Algorithm  
 
-### A. What is Dijkstra's Algorithm?
+2.1 [Dijkstra's Algorithm - Computerphile](https://www.youtube.com/watch?v=GazC3A4OQTE)  
 
-Dijkstra's algorithm is a path-finding algorithm for finding the shortest path between two nodes in a graph with non-negative edge path costs. It produces a shortest path tree, which is a tree containing all the shortest paths from the source node to all other nodes in the graph.
+### A. Introduction  
 
-### B. Where is Dijkstra's Algorithm Used?
+#### 1. What is Dijkstra's Algorithm?  
 
-Dijkstra's algorithm is widely used in routing and navigation applications, such as GPS navigation systems and network routing protocols. It is also used in other areas, such as scheduling and optimization problems.
+1.1 Dijkstra's algorithm computes the shortest path between two nodes in a graph with non-negative edge path costs.  
 
-## II. Algorithm Overview
+1.2 It yields a shortest path tree, encompassing all shortest paths from the source node to other nodes.
 
-### A. Maintaining a Priority Queue
+#### 2. Applications  
 
-Dijkstra's algorithm maintains a priority queue of unvisited nodes with estimated distances from the source node. The lowest priority node is removed from the queue and updated with the distances to its neighbors. This process is repeated until all nodes have been visited or the destination node has been reached.
+2.1 Widely used in routing and navigation systems, GPS, and network routing protocols. 
 
-### B. Repetition until Completion
+2.2 Applicable in scheduling and optimization problems.  
 
-The algorithm continues to process nodes until all nodes have been visited or the destination node has been reached. Once the destination node has been reached, the shortest path to that node has been found.
+### B. Algorithm Overview  
 
-## III. Limitations
+#### 1. Maintaining a Priority Queue  
 
-### A. Negative Edge Path Costs
+1.1 Dijkstra's algorithm manages a priority queue of unvisited nodes, estimating distances from the source.  
 
-Dijkstra's algorithm is not suitable for graphs with negative edge path costs. This is because the algorithm relies on the assumption that the distance between two nodes is always non-negative.
+1.2 The algorithm iteratively extracts the lowest priority node, updating distances to its neighbors.  
 
-### B. Direction of Travel
+#### 2. Repetition until Completion  
 
-Dijkstra's algorithm does not consider the direction of travel, which can lead to suboptimal routes in graphs with one-way edges.
+2.1 Continues until all nodes are visited or the destination node is reached.  
 
-## IV. Extensions
+### C. Limitations  
 
-### A. A* Algorithm
+#### 1. Negative Edge Path Costs  
 
-The A* algorithm is a variant of Dijkstra's algorithm that uses a heuristic to estimate the distance to the destination node. This can make the algorithm more efficient in some cases, especially when the heuristic is accurate.
+1.1 Unsuitable for graphs with negative edge path costs.  
 
-[![Satellite Navigation - Computerphile](https://img.youtube.com/vi/EUrU1y5is3Y/0.jpg)](https://www.youtube.com/watch?v=EUrU1y5is3Y)
+#### 2. Direction of Travel
 
-**D. A* Algorithm**
+2.1 Does not consider the direction of travel, potentially resulting in suboptimal routes.  
 
-1. A* is an extension of Dijkstra's algorithm that uses a heuristic to improve its performance.
-    ?? What is the Hueristic and can that change
-2. A heuristic is a function that estimates the distance to the goal node.
-3. A* is guaranteed to find the shortest path between two points if the heuristic is admissible.
+### D. Extensions  
 
-**E. Applications**
+#### 1. A\* Algorithm  
 
-1. A* is often used in applications where it is important to find the shortest path quickly, such as in route planning.
-2. It is also used in other applications, such as robotics and pathfinding.
+1.1 A\* is an extension of Dijkstra's algorithm utilizing a heuristic for improved performance.  
 
+1.2 [Satellite Navigation - Computerphile](https://www.youtube.com/watch?v=EUrU1y5is3Y)  
 
+## III. A\* Algorithm  
 
+### A. Introduction  
+
+1.1 A\* extends Dijkstra's algorithm, incorporating a heuristic for enhanced efficiency.
+
+1.2 The heuristic estimates the distance to the goal node.  
+
+1.3 A\* guarantees finding the shortest path with an admissible heuristic.  
+
+### B. Applications  
+
+1.1 A\* is commonly used in applications where quickly determining the shortest path is critical, such as route planning.  
+
+1.2 Additionally employed in robotics and pathfinding scenarios.
