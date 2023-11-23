@@ -30,14 +30,18 @@ Finally, the video discusses some of the limitations of the A* algorithm, and ho
 3. Each edge has a weight, which represents the cost of traversing the edge.
 
 **C. Dijkstra's Algorithm**
+[![Dijkstra's Algorithm - Computerphile](https://img.youtube.com/vi/GazC3A4OQTE/0.jpg)](https://www.youtube.com/watch?v=GazC3A4OQTE)
 
 1. Dijkstra's algorithm is a popular algorithm for finding the shortest path between two points.
 2. It works by keeping track of the shortest path to each node in the graph.
 3. It is guaranteed to find the shortest path between two points.
 
+[![Satellite Navigation - Computerphile](https://img.youtube.com/vi/EUrU1y5is3Y/0.jpg)](https://www.youtube.com/watch?v=EUrU1y5is3Y)
+
 **D. A* Algorithm**
 
 1. A* is an extension of Dijkstra's algorithm that uses a heuristic to improve its performance.
+    ?? What is the Hueristic and can that change
 2. A heuristic is a function that estimates the distance to the goal node.
 3. A* is guaranteed to find the shortest path between two points if the heuristic is admissible.
 
@@ -46,5 +50,5 @@ Finally, the video discusses some of the limitations of the A* algorithm, and ho
 1. A* is often used in applications where it is important to find the shortest path quickly, such as in route planning.
 2. It is also used in other applications, such as robotics and pathfinding.
 
-[![Dijkstra's Algorithm - Computerphile](https://img.youtube.com/vi/GazC3A4OQTE/0.jpg)](https://www.youtube.com/watch?v=GazC3A4OQTE)
+
 
