@@ -6,111 +6,180 @@ from mazelib.generate.Prims import Prims
 from mazelib.generate.AldousBroder import AldousBroder
 from mazelib.solve.BacktrackingSolver import BacktrackingSolver
 from matplotlib.colors import ListedColormap
-import time
-import sys
 import numpy  as np
-import timeit
+
+import numpy as np
+import matplotlib.pyplot as plt
+import matplotlib.animation as animation
 
 class AStar:
-    def __init__(self, maze):
+    def __init__(self, maze, start, end, animation_speed=200):
         self.maze = maze
+        self.start = start
+        self.end = end
+        self.steps = []
+        self.shortest_path = []
+        self.animation_speed = animation_speed
 
     def reconstruct_path(self, came_from, current):
+        """Reconstruct the path from start to current using came_from dictionary."""
         total_path = [current]
         while current in came_from:
             current = came_from[current]
             total_path.insert(0, current)
         return total_path
 
-    def a_star(self, start, goal):
+    def a_star(self):
+        """Implement the A* algorithm to find the shortest path from start to goal."""
+        start, goal = self.start, self.end
+
         def heuristic(node):
-            # Assuming a simple Euclidean distance heuristic for illustration
+            """Heuristic function for estimating the cost from node to goal."""
             return ((node[0] - goal[0]) ** 2 + (node[1] - goal[1]) ** 2) ** 0.5
 
         def get_neighbors(node):
-            # Assuming movement is allowed in four directions (up, down, left, right)
+            """Get neighboring nodes that are valid and not obstacles."""
             neighbors = []
             directions = [(0, 1), (0, -1), (1, 0), (-1, 0)]
-            for dir in directions:
-                neighbor = (node[0] + dir[0], node[1] + dir[1])
+            for delta_x, delta_y in directions:
+                neighbor = (node[0] + delta_x, node[1] + delta_y)
                 if 0 <= neighbor[0] < len(self.maze) and 0 <= neighbor[1] < len(self.maze[0]) and self.maze[neighbor[0]][neighbor[1]] != 1:
                     neighbors.append(neighbor)
             return neighbors
 
         def distance(node1, node2):
-            # Assuming a simple distance of 1 between adjacent nodes
+            """Distance function for the cost of moving from node1 to node2."""
             return 1
 
         open_set = {start}
         came_from = {}
-        g_score = {start: 0}
-        f_score = {start: heuristic(start)}
+        cost_so_far = {start: 0}
+        estimated_total_cost = {start: heuristic(start)}
 
         while open_set:
-            current = min(open_set, key=lambda node: f_score[node])
+            current = min(open_set, key=lambda node: estimated_total_cost[node])
 
             if current == goal:
-                return self.reconstruct_path(came_from, current)
+                path = self.reconstruct_path(came_from, current)
+                self.steps.append(path)
+
+                if not self.shortest_path or len(path) < len(self.shortest_path):
+                    self.shortest_path = path
+
+                return path
 
             open_set.remove(current)
             for neighbor in get_neighbors(current):
-                tentative_g_score = g_score[current] + distance(current, neighbor)
+                tentative_g_score = cost_so_far[current] + distance(current, neighbor)
 
-                if tentative_g_score < g_score.get(neighbor, float('inf')):
+                if tentative_g_score < cost_so_far.get(neighbor, float('inf')):
                     came_from[neighbor] = current
-                    g_score[neighbor] = tentative_g_score
-                    f_score[neighbor] = tentative_g_score + heuristic(neighbor)
+                    cost_so_far[neighbor] = tentative_g_score
+                    estimated_total_cost[neighbor] = tentative_g_score + heuristic(neighbor)
                     if neighbor not in open_set:
                         open_set.add(neighbor)
 
+                # Record the current state for animation
+                current_state = {
+                    "open_set": list(open_set),
+                    "came_from": came_from.copy(),
+                    "cost_so_far": cost_so_far.copy(),
+                    "estimated_total_cost": estimated_total_cost.copy(),
+                }
+                self.steps.append(current_state)
+
         return None  # Open set is empty, but the goal was never reached
 
-def showPNG(grid, start=None, end=None, path=None):
-    """Generate a simple image of the maze with start, end points, and a path."""
-    cmap = plt.cm.binary
-    norm = plt.Normalize(vmin=0, vmax=1)
+    def print_steps(self):
+        for i, step in enumerate(self.steps):
+            print(f"Step {i + 1}:")
+            if isinstance(step, list):  # A* path
+                print("  A* Path:", step)
+            else:  # Animation state
+                print("  Animation State:")
+                print("    Open Set:", step['open_set'])
+                print("    Came From:", step['came_from'])
+                print("    Cost So Far:", step['cost_so_far'])
+                print("    Estimated Total Cost:", step['estimated_total_cost'])
+            print()
 
-    plt.figure(figsize=(10, 5))
+    def generate_animation(self):
+        """Generate an animation to visualize the A* algorithm."""
+        fig, ax = plt.subplots()
+        maze_array = np.array(self.maze)
 
-    # Color the grid based on the maze
-    plt.imshow(grid, cmap=cmap, interpolation='nearest', norm=norm)
+        def update(frame):
+            ax.cla()  # Clear axis
+            ax.imshow(maze_array, cmap='gray_r')
 
-    # Highlight the start point in green
-    if start:
-        plt.scatter(start[1], start[0], color='green', marker='o', s=100, label='Start')
+            if frame < len(self.steps):
+                step = self.steps[frame]
 
-    # Highlight the end point in red
-    if end:
-        plt.scatter(end[1], end[0], color='red', marker='x', s=100, label='End')
+                if isinstance(step, list):  # A* path
+                    path_array = np.array(step)
+                    ax.plot(path_array[:, 1], path_array[:, 0], color='blue', marker='o')
+                else:  # Animation state
+                    # Visualize start and end nodes
+                    ax.scatter(self.start[1], self.start[0], color='green', marker='o', s=100, label='Start')
+                    ax.scatter(self.end[1], self.end[0], color='red', marker='x', s=100, label='End')
 
-    # Show the path if provided
-    if path:
-        path = np.array(path)
-        plt.plot(path[:, 1], path[:, 0], color='blue', linewidth=2, label='Path')
+                    # Visualize open set
+                    for node in step['open_set']:
+                        ax.text(node[1], node[0], 'O', ha='center', va='center', color='green', fontsize=8)
 
-    plt.xticks([]), plt.yticks([])
-    plt.legend()
-    plt.show()
+                    # Visualize came_from
+                    for node, came_from_node in step['came_from'].items():
+                        ax.arrow(came_from_node[1], came_from_node[0], node[1] - came_from_node[1], node[0] - came_from_node[0],
+                                shape='full', lw=0, length_includes_head=True, head_width=0.3, color='orange')
+
+                    ax.set_title(f"Frame {frame + 1}/{len(self.steps)}")
+
+            # Add other plot elements if needed
+
+
+        # Rest of the code remains the same
+        ani = animation.FuncAnimation(fig, update, frames=len(self.steps), repeat=False, interval=self.animation_speed)
+        plt.show()
+
+    def showPNG(self):
+        """Generate a simple image of the maze with start, end points, and a path."""
+        cmap = plt.cm.binary
+        norm = plt.Normalize(vmin=0, vmax=1)
+
+        plt.figure(figsize=(10, 5))
+
+        # Color the grid based on the maze
+        plt.imshow(self.maze, cmap=cmap, interpolation='nearest', norm=norm)
+
+        # Highlight the start point in green
+        if self.start:
+            plt.scatter(self.start[1], self.start[0], color='green', marker='o', s=100, label='Start')
+
+        # Highlight the end point in red
+        if self.end:
+            plt.scatter(self.end[1], self.end[0], color='red', marker='x', s=100, label='End')
+
+        # Show the path if provided
+        if self.shortest_path:
+            path_array = np.array(self.shortest_path)
+            plt.plot(path_array[:, 1], path_array[:, 0], color='blue', linewidth=2, label='Path')
+
+        plt.xticks([]), plt.yticks([])
+        plt.legend()
+        plt.show()
+
+
 
 m = Maze()
-m.generator = AldousBroder(1000,100)
+m.generator = AldousBroder(10,10)
 m.solver = BacktrackingSolver()
 m.generate()
 # m.generate_monte_carlo(10,1,.75)
 m.generate_entrances(False,False)
-showPNG(m.grid,m.start,m.end)
-print(m.start)
-print(m.end)
-print(m.grid)
-# a = AStar(m.grid,m.start,m.end)
-# a.find_path()
-# print(a.get_path())
-astar = AStar(m.grid)
 
-# Call the A* algorithm
-start_node = m.start
-start_time = time.time()
-path = astar.a_star(start_node, m.end)
-print("--- %s seconds ---" % (time.time() - start_time))
-showPNG(m.grid,m.start,m.end,path= path)
-print("Path:", path)
+astar = AStar(m.grid,m.start,m.end,10)
+astar.shortest_path = astar.a_star()
+
+print("Shortest Path:", astar.shortest_path)
+astar.generate_animation()
+astar.showPNG()
