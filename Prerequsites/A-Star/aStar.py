@@ -7,7 +7,7 @@ from mazelib.generate.AldousBroder import AldousBroder
 from mazelib.solve.BacktrackingSolver import BacktrackingSolver
 from matplotlib.colors import ListedColormap
 import numpy  as np
-
+import screeninfo
 import numpy as np
 import matplotlib.pyplot as plt
 import matplotlib.animation as animation
@@ -140,13 +140,12 @@ class AStar:
         # Rest of the code remains the same
         ani = animation.FuncAnimation(fig, update, frames=len(self.steps), repeat=False, interval=self.animation_speed)
         plt.show()
-
     def showPNG(self):
         """Generate a simple image of the maze with start, end points, and a path."""
         cmap = plt.cm.binary
         norm = plt.Normalize(vmin=0, vmax=1)
 
-        plt.figure(figsize=(10, 5))
+        plt.figure()
 
         # Color the grid based on the maze
         plt.imshow(self.maze, cmap=cmap, interpolation='nearest', norm=norm)
@@ -166,20 +165,26 @@ class AStar:
 
         plt.xticks([]), plt.yticks([])
         plt.legend()
+
+        # Center the window on the screen
+        screen = plt.get_current_fig_manager().window
+        screen_width, screen_height = screen.winfo_screenwidth(), screen.winfo_screenheight()
+        window_width, window_height = plt.gcf().get_size_inches()
+        screen.geometry(f"{int((screen_width - window_width) / 2)}x{int((screen_height - window_height) / 2)}+0+0")
+
         plt.show()
 
 
-
 m = Maze()
-m.generator = AldousBroder(10,10)
+m.generator = AldousBroder(1000,100)
 m.solver = BacktrackingSolver()
 m.generate()
 # m.generate_monte_carlo(10,1,.75)
 m.generate_entrances(False,False)
 
-astar = AStar(m.grid,m.start,m.end,10)
+astar = AStar(m.grid,m.start,m.end,5)
 astar.shortest_path = astar.a_star()
 
 print("Shortest Path:", astar.shortest_path)
-astar.generate_animation()
+# astar.generate_animation()
 astar.showPNG()
