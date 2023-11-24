@@ -1,5 +1,3 @@
-Here is the outline rewritten in Markdown format:
-
 # Understanding A\* Algorithm
 
 ## Overview
@@ -79,6 +77,7 @@ A brief summary of the A\* algorithm's key concepts and applications, including 
 1.1 A\* extends Dijkstra's algorithm, incorporating a heuristic for enhanced efficiency.
 
 1.2 The heuristic estimates the distance to the goal node.  
+-[https://theory.stanford.edu/~amitp/GameProgramming/Heuristics.html]
 
 1.3 A\* guarantees finding the shortest path with an admissible heuristic.  
 
@@ -87,3 +86,5 @@ A brief summary of the A\* algorithm's key concepts and applications, including 
 1.1 A\* is commonly used in applications where quickly determining the shortest path is critical, such as route planning.  
 
 1.2 Additionally employed in robotics and pathfinding scenarios.
+
+
