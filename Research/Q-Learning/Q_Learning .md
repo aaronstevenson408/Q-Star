@@ -7,5 +7,7 @@ https://www.youtube.com/watch?v=0iqz4tcKN58
 Temporal Difference Learning (including Q-Learning) | Reinforcement Learning Part 4
 https://www.youtube.com/watch?v=AJiG3ykOxmY
 
+Temporal Difference Learning (including Q-Learning) | Reinforcement Learning Part 4
+https://youtu.be/AJiG3ykOxmY?si=YcuFE3XPepwEC86a
 
 https://huggingface.co/learn/deep-rl-course/unit0/introduction
